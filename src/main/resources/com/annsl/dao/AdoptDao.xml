@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.AdoptDao">
+<resultMap id="adoptResultMap" type="adopt">
+    <result column="user_id" property="userId"/>
+    <result column="pet_id" property="petId"/>
+    <result column="adopt_time" property="adoptTime"/>
+</resultMap>
+    <insert id="addAdopt">
+        insert into adopt (user_id, pet_id, adopt_time, state)
+        values (#{userId}, #{petId}, #{adoptTime}, #{state});
+    </insert>
+    <update id="update">
+        update adopt set user_id = #{userId}, pet_id = #{petId}, adopt_time = #{adoptTime}, state = #{state};
+    </update>
+    <delete id="deleteById">
+        delete from adopt where id = #{id};
+    </delete>
+    <select id="getById" parameterType="integer" resultMap="adoptResultMap">
+        select * from adopt where id = #{id};
+    </select>
+    <select id="getAll" resultMap="adoptResultMap">
+        select * from adopt;
+    </select>
+
+</mapper>

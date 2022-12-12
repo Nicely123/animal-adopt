@@ -2,14 +2,15 @@ package com.annsl.dao;
 
 
 import com.annsl.domain.Admin;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 public interface AdminDao {
-    @Select("select * from admin")
-    public List<Admin> getAll();
+   // @Select("select * from admin")
+    List<Admin> getAll();
+    Admin getById(Integer id);
+    int addAdmin(Admin admin);
+    int deleteById(Integer id);
+    int update(Admin admin);
 
-    @Select("slect * from admin where id = #{id}")
-    public Admin getById(Integer id);
 }
