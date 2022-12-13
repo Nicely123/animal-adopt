@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.UserShare;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface UserShareService {
     /**
      * 添加一条用户捐赠信息

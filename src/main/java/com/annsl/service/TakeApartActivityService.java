@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.TakeApartActivity;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface TakeApartActivityService {
     /**
      * 添加一条人员参加活动信息

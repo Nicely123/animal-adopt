@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.Pet;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface PetService {
     /**
      * 添加一条宠物信息

@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.Comment;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface CommentService {
     /**
      * 添加一条评论

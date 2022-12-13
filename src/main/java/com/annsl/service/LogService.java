@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.Log;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface LogService {
     /**
      * 添加一条日志信息

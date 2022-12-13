@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.VoluntaryActivity;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface VoluntaryActivityService {
     /**
      * 添加一条志愿活动信息

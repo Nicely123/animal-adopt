@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.Denote;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface DenoteService {
     /**
      * 添加一条捐赠物品信息

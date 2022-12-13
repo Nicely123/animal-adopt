@@ -1,9 +1,10 @@
 package com.annsl.service;
 
 import com.annsl.domain.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional
 public interface UserService {
     /**
      * 获取所有用户信息
