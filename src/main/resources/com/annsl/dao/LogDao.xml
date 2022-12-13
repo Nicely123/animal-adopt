@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.LogDao">
+
+    <insert id="addLog">
+        insert into log (content, time) values (content, time);
+    </insert>
+    <update id="update">
+        update log set content = #{content}, time = #{time} where id = #{id};
+    </update>
+    <delete id="deleteById">
+        delete from log where id = #{id};
+    </delete>
+    <select id="getById" resultType="com.annsl.domain.Log">
+        select * from log where  id = #{id};
+    </select>
+    <select id="getAll" resultType="com.annsl.domain.Log">
+        select * from log;
+    </select>
+
+</mapper>

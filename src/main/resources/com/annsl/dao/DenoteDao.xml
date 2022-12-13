@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.DenoteDao">
+    <resultMap id="DenoteResultMap" type="Denote">
+        <result column="user_id" property="userId"/>
+        <result column="denote_good" property="denoteGood"/>
+    </resultMap>
+    <insert id="addDenote">
+        insert into denote (user_id, denote_good, type, time, state)
+        values (#{userId}, #{denoteGood}, #{type}, #{time}, #{state});
+    </insert>
+    <update id="update">
+        update denote set user_id = #{userId}, denote_good = #{denoteGood}, type = #{type}
+        , time = #{time}, state = #{state} where id = #{id};
+    </update>
+    <delete id="deleteById">
+        delete from denote where id = #{id};
+    </delete>
+    <select id="getById" resultMap="DenoteResultMap">
+        select * from denote where id = #{id};
+    </select>
+    <select id="getAll" resultMap="DenoteResultMap">
+        select * from denote;
+    </select>
+
+
+
+</mapper>

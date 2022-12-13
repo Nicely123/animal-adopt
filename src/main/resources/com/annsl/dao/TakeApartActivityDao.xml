@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.TakeApartActivityDao">
+    <resultMap id="TAAResultMap" type="TakeApartActivity">
+        <result column="user_id" property="userId"/>
+        <result column="activity_id" property="activityId"/>
+        <result column="apply_time" property="applyTime"/>
+    </resultMap>
+    <insert id="add">
+        insert into take_apart_activity (user_id, activity_id, apply_time, state)
+        values (#{userId}, #{activityId}, #{applyTime}, #{state});
+    </insert>
+    <update id="update">
+        update take_apart_activity set user_id = #{userId}, activity_id = #{activity_id}, apply_time = #{apply_time}
+                        , state = #{state} where id = #{id};
+    </update>
+    <delete id="deleteById">
+        delete from take_apart_activity where id = #{id};
+    </delete>
+    <select id="getById" resultMap="TAAResultMap">
+        select * from take_apart_activity where id = #{id};
+    </select>
+    <select id="getAll" resultMap="TAAResultMap">
+        select * from take_apart_activity;
+    </select>
+
+
+
+</mapper>
