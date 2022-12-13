@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.CommentDao">
+    <resultMap id="CommentResultMap" type="Comment">
+        <result column="user_id" property="userId"/>
+        <result column="pet_id" property="petId"/>
+    </resultMap>
+    <insert id="addComment">
+        insert into comment (user_id, pet_id, time, content)
+        values (#{userId}, #{petId}, #{time}, #{content});
+    </insert>
+    <update id="update">
+        update comment set user_id = #{userId}, pet_id = {petId}, time = #{time}, content = #{content};
+    </update>
+    <delete id="deleteById">
+        delete from comment where id = #{id};
+    </delete>
+    <select id="getById" resultMap="CommentResultMap">
+        select * from comment where id = #{id};
+    </select>
+    <select id="getAll" resultMap="CommentResultMap">
+        select * from comment;
+    </select>
+</mapper>
