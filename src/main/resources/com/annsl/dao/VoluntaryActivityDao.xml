@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.annsl.dao.VoluntaryActivityDao">
+    <resultMap id="VAResultMap" type="VoluntaryActivity">
+        <result column="admin_id" property="adminId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="end_time" property="endTime"/>
+    </resultMap>
+    <insert id="add">
+        insert into voluntary_activity (admin_id, create_time, begin_time, end_time, content)
+        values (#{adminId}, #{createTime}, #{beginTime}, #{endTime}, #{content});
+    </insert>
+    <update id="update">
+        update voluntary_activity set user_id = #{userId}, denote_good = #{denoteGood}, type = #{type}
+                        , time = #{time}, state = #{state} where id = #{id};
+    </update>
+    <delete id="deleteById">
+        delete from voluntary_activity where id = #{id};
+    </delete>
+    <select id="getById" resultMap="VAResultMap">
+        select * from voluntary_activity where id = #{id};
+    </select>
+    <select id="getAll" resultMap="VAResultMap">
+        select * from voluntary_activity;
+    </select>
+
+
+
+</mapper>
