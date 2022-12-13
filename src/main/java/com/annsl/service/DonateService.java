@@ -1,17 +1,17 @@
 package com.annsl.service;
 
-import com.annsl.domain.Denote;
+import com.annsl.domain.Donate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Transactional
-public interface DenoteService {
+public interface DonateService {
     /**
      * 添加一条捐赠物品信息
-     * @param denote
+     * @param donate
      * @return
      */
-    int addDenote(Denote denote);
+    int addDonate(Donate donate);
 
     /**
      * 根据id删除一条捐赠物品信息
@@ -25,18 +25,18 @@ public interface DenoteService {
      * @param id
      * @return
      */
-    Denote getById(Integer id);
+    Donate getById(Integer id);
 
     /**
      * 获取全部捐赠物品信息
      * @return
      */
-    List<Denote> getAll();
+    List<Donate> getAll();
 
     /**
      * 根据id更新捐赠物品信息
-     * @param denote
+     * @param donate
      * @return
      */
-    int update(Denote denote);
+    int update(Donate donate);
 }

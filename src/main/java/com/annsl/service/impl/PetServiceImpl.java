@@ -1,5 +1,6 @@
 package com.annsl.service.impl;
 
+import com.annsl.dao.PetDao;
 import com.annsl.domain.Pet;
 import com.annsl.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,29 +10,29 @@ import java.util.List;
 @Service
 public class PetServiceImpl implements PetService {
     @Autowired
-    private PetService petService;
+    private PetDao petDao;
     @Override
     public int addPet(Pet pet) {
-        return petService.addPet(pet);
+        return petDao.addPet(pet);
     }
 
     @Override
     public int deleteById(Integer id) {
-        return petService.deleteById(id);
+        return petDao.deleteById(id);
     }
 
     @Override
     public Pet getById(Integer id) {
-        return petService.getById(id);
+        return petDao.getById(id);
     }
 
     @Override
     public List<Pet> getAll() {
-        return petService.getAll();
+        return petDao.getAll();
     }
 
     @Override
     public int update(Pet pet) {
-        return petService.update(pet);
+        return petDao.update(pet);
     }
 }

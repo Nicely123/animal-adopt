@@ -19,9 +19,6 @@
         select * from pet where id = #{id};
     </select>
     <select id="getAll" resultType="pet">
-        select * from denote;
+        select * from pet;
     </select>
-
-
-
 </mapper>

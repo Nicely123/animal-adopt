@@ -1,17 +1,17 @@
 package com.annsl.domain;
 
-public class Denote {
+public class Donate {
     private Integer id;
     private String userId;
-    private String denoteGood;
+    private String donateGood;
     private String type;
     private String time;
     private String state;
 
-    public Denote(Integer id, String userId, String denoteGood, String type, String time, String state) {
+    public Donate(Integer id, String userId, String denoteGood, String type, String time, String state) {
         this.id = id;
         this.userId = userId;
-        this.denoteGood = denoteGood;
+        this.donateGood = denoteGood;
         this.type = type;
         this.time = time;
         this.state = state;
@@ -22,7 +22,7 @@ public class Denote {
         return "Denote{" +
                 "id=" + id +
                 ", userId='" + userId + '\'' +
-                ", denoteGood='" + denoteGood + '\'' +
+                ", denoteGood='" + donateGood + '\'' +
                 ", type='" + type + '\'' +
                 ", time='" + time + '\'' +
                 ", state='" + state + '\'' +
@@ -45,12 +45,12 @@ public class Denote {
         this.userId = userId;
     }
 
-    public String getDenoteGood() {
-        return denoteGood;
+    public String getDonateGood() {
+        return donateGood;
     }
 
-    public void setDenoteGood(String denoteGood) {
-        this.denoteGood = denoteGood;
+    public void setDenoteGood(String donateGood) {
+        this.donateGood = donateGood;
     }
 
     public String getType() {
@@ -77,6 +77,6 @@ public class Denote {
         this.state = state;
     }
 
-    public Denote() {
+    public Donate() {
     }
 }

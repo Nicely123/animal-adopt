@@ -1,5 +1,6 @@
 package com.annsl.service.impl;
 
+import com.annsl.dao.VoluntaryActivityDao;
 import com.annsl.domain.VoluntaryActivity;
 import com.annsl.service.VoluntaryActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,29 +10,29 @@ import java.util.List;
 @Service
 public class VoluntaryActivityServiceImpl implements VoluntaryActivityService {
     @Autowired
-    private VoluntaryActivityService vaService;
+    private VoluntaryActivityDao activityDao;
     @Override
     public int add(VoluntaryActivity va) {
-        return vaService.add(va);
+        return activityDao.add(va);
     }
 
     @Override
     public int deleteById(Integer id) {
-        return vaService.deleteById(id);
+        return activityDao.deleteById(id);
     }
 
     @Override
     public VoluntaryActivity getById(Integer id) {
-        return vaService.getById(id);
+        return activityDao.getById(id);
     }
 
     @Override
     public List<VoluntaryActivity> getAll() {
-        return vaService.getAll();
+        return activityDao.getAll();
     }
 
     @Override
     public int update(VoluntaryActivity va) {
-        return vaService.update(va);
+        return activityDao.update(va);
     }
 }
