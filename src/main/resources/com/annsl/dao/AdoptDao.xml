@@ -13,7 +13,8 @@
         values (#{userId}, #{petId}, #{adoptTime}, #{state});
     </insert>
     <update id="update">
-        update adopt set user_id = #{userId}, pet_id = #{petId}, adopt_time = #{adoptTime}, state = #{state};
+        update adopt set user_id = #{userId}, pet_id = #{petId}, adopt_time = #{adoptTime}, state = #{state}
+        where id = #{id};
     </update>
     <delete id="deleteById">
         delete from adopt where id = #{id};

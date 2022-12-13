@@ -12,7 +12,8 @@
         values (#{userId}, #{petId}, #{time}, #{content});
     </insert>
     <update id="update">
-        update comment set user_id = #{userId}, pet_id = {petId}, time = #{time}, content = #{content};
+        update comment set user_id = #{userId}, pet_id = {petId}, time = #{time}, content = #{content}
+        where id = #{id};
     </update>
     <delete id="deleteById">
         delete from comment where id = #{id};
