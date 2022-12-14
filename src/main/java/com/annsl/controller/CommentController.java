@@ -14,27 +14,36 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping
-    public boolean add(@RequestBody Comment comment){
-        return commentService.addComment(comment) > 0;
+    public Result add(@RequestBody Comment comment){
+        boolean flag = commentService.addComment(comment) > 0;
+        return new Result(flag ? Code.SAVE_OK : Code.SAVE_ERR, flag);
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteById(@PathVariable Integer id){
-        return commentService.deleteById(id) > 0;
+    public Result deleteById(@PathVariable Integer id){
+        boolean flag = commentService.deleteById(id) > 0;
+        return new Result(flag ? Code.DELETE_OK : Code.DELETE_ERR, flag);
     }
 
     @GetMapping("/{id}")
-    public Comment getById(@PathVariable Integer id){
-        return  commentService.getById(id);
+    public Result getById(@PathVariable Integer id){
+        Comment comment = commentService.getById(id);
+        Integer code = comment != null ? Code.GET_OK:Code.GET_ERR;
+        String msg = comment != null ? "" : "数据查询失败，请重试！";
+        return  new Result(code, comment, msg);
     }
 
     @GetMapping
-    public List<Comment> getAll(){
-        return commentService.getAll();
+    public Result getAll(){
+        List<Comment> commentList = commentService.getAll();
+        Integer code = commentList != null ? Code.GET_ALL_OK:Code.GET_ALL_ERR;
+        String msg = commentList != null ? "" : "数据查询失败，请重试！";
+        return  new Result(code, commentList, msg);
     }
 
     @PutMapping
-    public Boolean update(@RequestBody Comment comment){
-        return commentService.update(comment) > 0;
+    public Result update(@RequestBody Comment comment){
+        boolean flag = commentService.update(comment) > 0;
+        return new Result(flag ? Code.UPDATE_OK : Code.UPDATE_ERR, flag);
     }
 }

@@ -15,27 +15,36 @@ public class DonateController {
     private DonateService donateService;
 
     @PostMapping
-    public boolean add(@RequestBody Donate donate){
-        return donateService.addDonate(donate)>0;
+    public Result add(@RequestBody Donate donate){
+        boolean flag = donateService.addDonate(donate) > 0;
+        return new Result(flag ? Code.SAVE_OK : Code.SAVE_ERR, flag);
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteById(@PathVariable Integer id){
-        return donateService.deleteById(id)>0;
+    public Result deleteById(@PathVariable Integer id){
+        boolean flag = donateService.deleteById(id) > 0;
+        return new Result(flag ? Code.DELETE_OK : Code.DELETE_ERR, flag);
     }
 
     @GetMapping("/{id}")
-    public Donate getById(@PathVariable Integer id){
-        return donateService.getById(id);
+    public Result getById(@PathVariable Integer id){
+        Donate donate = donateService.getById(id);
+        Integer code = donate != null ? Code.GET_OK:Code.GET_ERR;
+        String msg = donate != null ? "" : "数据查询失败，请重试！";
+        return  new Result(code, donate, msg);
     }
 
     @GetMapping
-    public List<Donate> getAll(){
-        return donateService.getAll();
+    public Result getAll(){
+        List<Donate> donateList = donateService.getAll();
+        Integer code = donateList != null ? Code.GET_ALL_OK:Code.GET_ALL_ERR;
+        String msg = donateList != null ? "" : "数据查询失败，请重试！";
+        return  new Result(code, donateList, msg);
     }
 
     @PutMapping
-    public boolean update(Donate donate){
-        return donateService.update(donate)>0;
+    public Result update(Donate donate){
+        boolean flag = donateService.update(donate) > 0;
+        return new Result(flag ? Code.UPDATE_OK : Code.UPDATE_ERR, flag);
     }
 }

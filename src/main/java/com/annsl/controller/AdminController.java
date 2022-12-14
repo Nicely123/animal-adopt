@@ -15,27 +15,36 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping
-    public boolean add(@RequestBody Admin admin){
-        return adminService.addAdmin(admin)>0;
+    public Result add(@RequestBody Admin admin){
+        boolean flag = adminService.addAdmin(admin)>0;
+        return new Result(flag ? Code.SAVE_OK:Code.SAVE_ERR, flag);
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteById(@PathVariable Integer id){
-        return adminService.deleteById(id)>0;
+    public Result deleteById(@PathVariable Integer id){
+        boolean flag = adminService.deleteById(id)>0;
+        return new Result(flag ? Code.DELETE_OK:Code.DELETE_ERR, flag);
     }
 
     @GetMapping("/{id}")
-    public Admin getById(@PathVariable Integer id){
-        return adminService.getById(id);
+    public Result getById(@PathVariable Integer id){
+        Admin admin = adminService.getById(id);
+        Integer code = admin != null ? Code.GET_OK : Code.GET_ERR;
+        String msg = admin != null ? "" : "数据查询失败，请重试！";
+        return new Result(code,admin,msg);
     }
 
     @GetMapping
-    public List<Admin> getAll(){
-        return  adminService.getAll();
+    public Result getAll(){
+        List<Admin> adminList = adminService.getAll();
+        Integer code = adminList != null ? Code.GET_ALL_OK : Code.GET_ALL_ERR;
+        String msg = adminList != null ? "" : "数据查询失败，请重试！";
+        return new Result(code,adminList,msg);
     }
 
     @PutMapping
-    public boolean update(@RequestBody Admin admin){
-        return adminService.update(admin) > 0;
+    public Result update(@RequestBody Admin admin){
+        boolean flag = adminService.update(admin) > 0;
+        return new Result(flag ? Code.UPDATE_OK:Code.UPDATE_ERR, flag);
     }
 }
